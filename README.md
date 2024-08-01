@@ -3,6 +3,28 @@ PLAN
 -Set up render database link
 (instructions in prev workshop)
 
+-Clone Repo
+-Install packages
+-Create database in render
+-Add environment variable in Render
+-Add environment variables to.env example and rename the file
+-Start the app and see if it works
+-Create a basic README with 'getting started' section
+
+As we are using the exisitng database design (Albums/Artists)
+-run npm install
+-Add evironment variables to .env.example and rename the file
+-Try starting the app 'npm run dev'
+-Run the 'npm run reset-database' command to check we can connect and that the reset script works and doesn't error
+-Begin working on the handlers and helpers 
+  -Change helper file name
+  -Change helper file function names
+  -Change the request handler URLS
+  -Test the new request handlers work/can be called
+
+
+
+
 Milestones:
 -Plan and design your database schema (You should have a minimum of 2 tables that are linked with a primary and foreign key)
 (We are using exisiting one)
