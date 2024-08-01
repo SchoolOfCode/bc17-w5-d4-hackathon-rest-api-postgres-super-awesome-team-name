@@ -8,10 +8,12 @@ Milestones:
 (We are using exisiting one)
 DROP TABLE IF EXISTS artists CASCADE;
 DROP TABLE IF EXISTS albums CASCADE;
+
 //What do we want in the artists table:
   (This has been preset already- should we use that software to look at what the schema looks like?)
   -name 
   //Do we also want artist_id in this as well? 
+  
 //What do we want in the albums table:
 (This has been preset already)
   -title
