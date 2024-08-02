@@ -85,6 +85,9 @@ app.get("/albums/:id", async function (req, res) {
 
 // Endpoint to create a new <resource_one>
 app.post("/albums/", async function (req, res) {
+  const data = req.body;
+  const albums = await createAlbums(data);
+  res.status(201).json({ status: "success", data: albums });
 
 });
 
@@ -148,30 +151,12 @@ app.get("/artists/", async function (req, res) {
   
   // Endpoint to create a new <resource_twos>
   app.post("/artists/", async function (req, res) {
-    const add = req.body
-    const artist= await createArtist(add);
-    try {
-      const artists = await getArtistsById(id);
-      if (!artists) {
-        return res.status(400).json({
-          success: false,
-          payload: "Error, try again" 
-        });
-      }
-      return res.status(200).json({
-        success: true,
-        payload: artists
-      });
-    } catch (error) {
-      console.error('Error fetching artist:', error);
-      return res.status(500).json({
-        success: false,
-        payload: error.message // Return error message
-      });
-    }
+    const data = req.body;
+    const artist = await createArtists(data);
+    res.status(201).json({ status: "success", data: artist });
   });
     
-  });
+
   
   // Endpoint to update a specific <resource_twos> by id
   app.patch("/artists/:id", async function (req, res) {

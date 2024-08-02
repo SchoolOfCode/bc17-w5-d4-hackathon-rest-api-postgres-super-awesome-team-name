@@ -16,10 +16,15 @@ export async function getArtistsById(id) {
   // Query the database and return the resource with a matching id or null
 }
 
-export async function createArtists(resource) {
+export async function createArtists(artist) {
   // Query the database to create an resource and return the newly created resource
-}
+  const queryText = "INSERT INTO artists (name) VALUES ($1) RETURNING *"
+  const result = await pool.query(queryText, [artist.name])
+  return result.rows[0];
 
+ 
+  }
+  
 export async function updateArtistsById(id, updates) {
   // Query the database to update the resource and return the newly updated resource or null
 }

@@ -18,8 +18,11 @@ export async function getAlbumsById(id) {
   // Query the database and return the resource with a matching id or null
 }
 
-export async function createAlbums(resource) {
+export async function createAlbums(album) {
   // Query the database to create an resource and return the newly created resource
+  const queryText = "INSERT INTO albums (title, published_date, artist_id) VALUES ($1, $2, $3) RETURNING *"
+  const result = await pool.query(queryText, [album.title, album.published_date, album.artist_id])
+  return result.rows[0];
 }
 
 export async function updateAlbumsById(id, updates) {
