@@ -93,10 +93,18 @@ app.post("/albums/", async function (req, res) {
 
 // Endpoint to update a specific <resource_one> by id
 app.patch("/albums/:id", async function (req, res) {
+  const id = req.params.id;
+  const updates = req.body;
+  const album = await updateAlbumsById(id, updates);
+  res.status(200).json({ status: "success", data: album });
 });
 
 // Endpoint to delete a specific <resource_one> by id
 app.delete("/albums/:id", async function (req, res) {
+  const id = req.params.id;
+  const album = await deleteAlbumsById(id);
+  res.status(200).json({ status: "success", data: album });
+  
 });
 
 

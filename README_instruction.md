@@ -1,5 +1,5 @@
-Instructions to get started:
+# Instructions to get started:
 
--Run 'npm install'
--Add environment variables to .env example and rename the file
--Try starting the app 'npm run dev'
+-Run <code>'npm install'</code><br>
+-Add environment variables to .env example and rename the file <br>
+-Try starting the app <code>'npm run dev'</code>
