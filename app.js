@@ -85,6 +85,7 @@ app.get("/albums/:id", async function (req, res) {
 
 // Endpoint to create a new <resource_one>
 app.post("/albums/", async function (req, res) {
+
 });
 
 // Endpoint to update a specific <resource_one> by id
@@ -123,10 +124,53 @@ app.get("/artists/", async function (req, res) {
   
   // Endpoint to retrieve a <resource_twos> by id
   app.get("/artists/:id", async function (req, res) {
-  });
+    const id = req.params.id;
+  try {
+    const artists = await getArtistsById(id);
+    if (!artists) {
+      return res.status(400).json({
+        success: false,
+        payload: "Artist not found" 
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      payload: artists
+    });
+  } catch (error) {
+    console.error('Error fetching artist:', error);
+    return res.status(500).json({
+      success: false,
+      payload: error.message // Return error message
+    });
+  }
+});
   
   // Endpoint to create a new <resource_twos>
   app.post("/artists/", async function (req, res) {
+    const add = req.body
+    const artist= await createArtist(add);
+    try {
+      const artists = await getArtistsById(id);
+      if (!artists) {
+        return res.status(400).json({
+          success: false,
+          payload: "Error, try again" 
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        payload: artists
+      });
+    } catch (error) {
+      console.error('Error fetching artist:', error);
+      return res.status(500).json({
+        success: false,
+        payload: error.message // Return error message
+      });
+    }
+  });
+    
   });
   
   // Endpoint to update a specific <resource_twos> by id
