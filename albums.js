@@ -5,12 +5,16 @@ import { pool } from "./db/index.js";
 export async function getAlbums() {
   const queryText = 'SELECT * FROM albums'
   const result = await pool.query(queryText)
-console.log("hello")
   return result.rows;
   // Query the database and return all resource ones
 }
 
 export async function getAlbumsById(id) {
+  const queryText = 'SELECT * FROM albums WHERE id = $1'
+  const result = await pool.query(queryText, [id])
+  console.log("HI")
+  return result.rows[0] || null;
+
   // Query the database and return the resource with a matching id or null
 }
 

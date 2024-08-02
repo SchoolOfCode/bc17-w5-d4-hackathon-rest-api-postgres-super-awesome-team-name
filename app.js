@@ -21,6 +21,7 @@ import {
   updateArtistsById,
   deleteArtistsById,
 } from "./artists.js";
+import e from "express";
 
 
 
@@ -59,7 +60,28 @@ app.get("/albums/", async function (req, res) {
 
 // Endpoint to retrieve a <resource_one> by id
 app.get("/albums/:id", async function (req, res) {
+  const id = req.params.id;
+  try {
+    const albums = await getAlbumsById(id);
+    if (!albums) {
+      return res.status(400).json({
+        success: false,
+        payload: "Album not found" 
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      payload: albums
+    });
+  } catch (error) {
+    console.error('Error fetching album:', error);
+    return res.status(500).json({
+      success: false,
+      payload: error.message // Return error message
+    });
+  }
 });
+
 
 // Endpoint to create a new <resource_one>
 app.post("/albums/", async function (req, res) {
@@ -80,8 +102,23 @@ app.delete("/albums/:id", async function (req, res) {
 
 // Endpoint to retrieve all <resource_twos>
 app.get("/artists/", async function (req, res) {
-    const authors = await getAuthors();
-    res.status(200).json({ status: "success", data: authors });
+  try{
+    const artists = await getArtists()
+    
+    res.status(200).json({
+      success: true,
+      payload: artists
+    }
+    )}
+    catch(error) {
+      res.status(400).json({
+        success: false,
+        payload: error
+        
+      }
+      )
+    }
+
   });
   
   // Endpoint to retrieve a <resource_twos> by id

@@ -3,10 +3,16 @@
 import { pool } from "./db/index.js";
 
 export async function getArtists() {
+  const queryText = 'SELECT * FROM artists'
+  const result = await pool.query(queryText)
+  return result.rows;
   // Query the database and return all resource twos
 }
 
 export async function getArtistsById(id) {
+  const queryText = "SELECT * FROM artists WHERE id = $1"
+  const result = await pool.query(queryText, [id])
+  return result.rows[0];
   // Query the database and return the resource with a matching id or null
 }
 
