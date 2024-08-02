@@ -3,6 +3,10 @@
 import { pool } from "./db/index.js";
 
 export async function getAlbums() {
+  const queryText = 'SELECT * FROM albums'
+  const result = await pool.query(queryText)
+console.log("hello")
+  return result.rows;
   // Query the database and return all resource ones
 }
 

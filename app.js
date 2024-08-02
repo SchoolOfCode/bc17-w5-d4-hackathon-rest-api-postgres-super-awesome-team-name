@@ -38,9 +38,24 @@ app.use(morgan("dev")); // morgan() middleware is used to log the incoming reque
 
 // Endpoint to retrieve all <resource_one>
 app.get("/albums/", async function (req, res) {
-    console.log("I'm alive");
-    res.status(200).send("I'm alive!");
-});
+  try{
+    const albums = await getAlbums()
+    console.log("hi")
+    res.status(200).json({
+      success: true,
+      payload: albums
+    }
+    )}
+    catch(error) {
+      res.status(400).json({
+        success: false,
+        payload: error
+        
+      }
+      )
+    }
+
+  });
 
 // Endpoint to retrieve a <resource_one> by id
 app.get("/albums/:id", async function (req, res) {
