@@ -1,6 +1,6 @@
 // Import the required modules
 import express from "express";
-
+import morgan from "morgan";
 
 
 // Import your helper functions for your albums here
@@ -30,7 +30,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json()); // express.json() middleware is used to parse incoming JSON requests
-
+app.use(morgan("dev")); // morgan() middleware is used to log the incoming requests
 
 
 
