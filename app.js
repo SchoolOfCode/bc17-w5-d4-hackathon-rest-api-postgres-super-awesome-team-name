@@ -3,24 +3,24 @@ import express from "express";
 
 
 
-// Import your helper functions for your first resource here
-// import {
-//   getResourceOne,
-//   getResourceOneById,
-//   createResourceOne,
-//   updateResourceOneById,
-//   deleteResourceOneById,
-// } from "./resource_one.js";
+// Import your helper functions for your albums here
+import {
+  getAlbums,
+  getAlbumsById,
+  createAlbums,
+  updateAlbumsById,
+  deleteAlbumsById,
+} from "./albums.js";
 
 
-// Import your helper functions for your second resource here
-// import {
-//   getResourceTwo,
-//   getResourceTwoById,
-//   createResourceTwo,
-//   updateResourceTwoById,
-//   deleteResourceTwoById,
-// } from "./resource_two.js";
+// Import your helper functions for your artists here
+import {
+  getArtists,
+  getArtistsById,
+  createArtists,
+  updateArtistsById,
+  deleteArtistsById,
+} from "./artists.js";
 
 
 
